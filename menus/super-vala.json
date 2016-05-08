@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle super-vala",
+        "command": "super-vala:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "super-vala",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "super-vala:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

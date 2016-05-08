@@ -1,0 +1,24 @@
+{
+    "name": "super-vala",
+    "main": "./lib/super-vala",
+    "version": "0.0.0",
+    "description": "Super Vala gives autocompletion to Vala code.",
+    "keywords": [
+        "vala", "autocomplete"
+    ],
+    "repository": "https://github.com/Bat41/super-vala",
+    "license": "MIT",
+    "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+    },
+    "providedServices": {
+        "autocomplete.provider": {
+            "versions": {
+                "2.0.0": "getProvider"
+            }
+        }
+    },
+    "dependencies": {
+
+    }
+}
