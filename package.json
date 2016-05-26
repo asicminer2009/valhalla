@@ -1,7 +1,7 @@
 {
   "name": "super-vala",
   "main": "./lib/super-vala",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Super Vala gives autocompletion to Vala code.",
   "keywords": [
     "vala",
