@@ -1,7 +1,8 @@
 # Changelog
 
 ## 0.4.0
-- Added support for local variables
+- Added support of local variables
+- Added support of local variables properties and methods
 
 ## 0.3.2
 * Added support for delegates and signals
