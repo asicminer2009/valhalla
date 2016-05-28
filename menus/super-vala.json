@@ -2,21 +2,25 @@
   "context-menu": {
     "atom-text-editor": [
       {
-        "label": "Toggle super-vala",
-        "command": "super-vala:toggle"
+        "label": "Create a new Vala class",
+        "command": "super-vala:new-class"
       }
     ]
   },
   "menu": [
     {
-      "label": "Packages",
+      "label": "Vala",
       "submenu": [
         {
-          "label": "super-vala",
+          "label": "Create new ...",
           "submenu": [
             {
-              "label": "Toggle",
-              "command": "super-vala:toggle"
+              "label": "Class",
+              "command": "super-vala:new-class"
+            },
+            {
+                "label": "Interface",
+                "command": "super-vala:new-interface"
             }
           ]
         }

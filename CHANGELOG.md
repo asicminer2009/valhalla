@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.5.0
+- Suggestion for instance members, when typing `this`
+- Error if using `this` when not in a class
+- Menu to quickly create new classes or interfaces
+
 ## 0.4.0
 - Added support of local variables
 - Added support of local variables properties and methods
