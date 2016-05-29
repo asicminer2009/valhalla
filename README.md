@@ -1,10 +1,8 @@
-**Warning : this package is very experimental.**
+**Warning : this package is quite experimental for now.**
 
-# Super Vala
+# ![Vala icon](https://elementary.io/images/developer/vala.svg) Super Vala
 
-![Vala icon](https://elementary.io/images/developer/vala.svg)
-
-This package provides autocompletion for Vala in atom.
+This package provides autocompletion for Vala in atom. It also help you creating new classes or interfaces quickly, through a little menu.
 
 ![Vala code autocompletion](https://framapic.org/fO9WNcBbybqD/fbCmOsHPXf9M)
 

@@ -1,18 +1,27 @@
 using Valse;
-using Gee;
 
-public class Blob : Object {
-    public Blob (string hey) {
+/**
+* Test
+*
+* Loleu
+* Re loleu
+*
+* @return truc
+*/
+void main () {
+    print(saluer_anglais("Bat'", 745));
+}
 
-        h
-        string blob = "";
-        if (hey == "saluton") {
-            print ("Esperanto !\n");
-        } else {
-            string une_variable_avec_un_nom_super_long_qu_on_a_pas_envie_de_recopier = "bonjour";
-            int bleb = 243;
-        }
+/**
+* Salue une personne.
+*/
+string saluer (string nom, int age) {
+    return "Bonjour " + nom + " !";
+}
 
-        Router r = new Router();
-    }
+/**
+* Salue une personne, en anglais.
+*/
+string saluer_anglais (string nom, int age) {
+    return "Hello " + nom + " !";
 }

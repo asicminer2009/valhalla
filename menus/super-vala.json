@@ -5,7 +5,17 @@
         "label": "Create a new Vala class",
         "command": "super-vala:new-class"
       }
-    ]
+  ],
+  ".tree-view li.entry": [
+      {
+        "label": "Create a new class",
+        "command": "super-vala:new-class"
+      },
+      {
+          "label": "Create a new interface",
+          "command": "super-vala:new-interface"
+      }
+  ]
   },
   "menu": [
     {
