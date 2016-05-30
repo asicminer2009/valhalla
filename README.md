@@ -1,6 +1,6 @@
 **Warning : this package is quite experimental for now.**
 
-# ![Vala icon](https://elementary.io/images/developer/vala.svg) Super Vala
+# ![Vala icon](https://elementary.io/images/developer/vala.svg) Valhalla
 
 This package provides autocompletion for Vala in atom. It also help you creating new classes or interfaces quickly, through a little menu.
 
