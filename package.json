@@ -7,7 +7,7 @@
     "vala",
     "autocomplete"
   ],
-  "repository": "https://github.com/Bat41/super-vala",
+  "repository": "https://github.com/Bat41/valhalla",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
