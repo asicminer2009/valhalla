@@ -1,5 +1,5 @@
 {
-  "name": "super-vala",
+  "name": "valhalla",
   "main": "./lib/super-vala",
   "version": "0.5.1",
   "description": "Super Vala gives autocompletion to Vala code.",
