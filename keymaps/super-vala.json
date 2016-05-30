@@ -1,5 +1,5 @@
 {
   "atom-workspace": {
-    "ctrl-alt-o": "super-vala:toggle"
+    "ctrl-n": "super-vala:new-class"
   }
 }
