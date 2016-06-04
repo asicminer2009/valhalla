@@ -1,9 +1,10 @@
 using Valse;
+using Linux.Console;
 
 void main () {
     Router r = new Router();
     string re = "test";
-    re.
+    r.
 }
 
 
