@@ -4,7 +4,11 @@
       {
         "label": "Create a new Vala class",
         "command": "super-vala:new-class"
-      }
+    },
+    {
+        "label": "Surround with ...",
+        "command": "valhalla:surround"
+    }
   ],
   ".tree-view li.entry": [
       {

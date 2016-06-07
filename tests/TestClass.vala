@@ -3,6 +3,8 @@
 */
 public class TestClass : Object {
 
+    public TestClass next {get; set;}
+
     public int add (int a, int b) {
         return a + b;
     }
@@ -16,8 +18,9 @@ public class TestClass : Object {
     /**
     * A constructor.
     */
-    public TestClass () {
+    public TestClass (string blob) {
         string hey = this.hello;
-        this.
+        this.add ();
+        this.next.log_error (err);
     }
 }
