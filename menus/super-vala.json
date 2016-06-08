@@ -3,7 +3,7 @@
     "atom-text-editor": [
       {
         "label": "Create a new Vala class",
-        "command": "super-vala:new-class"
+        "command": "valhalla:new-class"
     },
     {
         "label": "Surround with ...",
@@ -13,11 +13,11 @@
   ".tree-view li.entry": [
       {
         "label": "Create a new class",
-        "command": "super-vala:new-class"
+        "command": "valhalla:new-class"
       },
       {
           "label": "Create a new interface",
-          "command": "super-vala:new-interface"
+          "command": "valhalla:new-interface"
       }
   ]
   },
@@ -30,11 +30,11 @@
           "submenu": [
             {
               "label": "Class",
-              "command": "super-vala:new-class"
+              "command": "valhalla:new-class"
             },
             {
                 "label": "Interface",
-                "command": "super-vala:new-interface"
+                "command": "valhalla:new-interface"
             }
           ]
         }

@@ -1,8 +1,8 @@
 'use babel';
 
-import SuperValaView from '../lib/super-vala-view';
+import InputView from '../lib/input-view';
 
-describe('SuperValaView', () => {
+describe('InputView', () => {
   it('has one valid test', () => {
     expect('life').toBe('easy');
   });
