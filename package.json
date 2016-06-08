@@ -1,14 +1,15 @@
 {
   "name": "valhalla",
-  "main": "./lib/super-vala",
+  "main": "./lib/valhalla",
   "version": "0.8.1",
-  "description": "Super Vala gives autocompletion to Vala code.",
+  "description": "Valhalla gives autocompletion to Vala code.",
   "keywords": [
     "vala",
-    "autocomplete"
+    "autocomplete",
+    "autocomplete-plus"
   ],
   "repository": "https://github.com/Bat41/valhalla",
-  "license": "MIT",
+  "license": "LGPLv3",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
