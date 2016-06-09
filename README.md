@@ -4,6 +4,8 @@
 
 This package provides autocompletion for Vala in atom. It also help you creating new classes or interfaces quickly, through a little menu and have a *Surround with ...* function.
 
+To make it work, you should first install the [language-vala](https://atom.io/packages/language-vala) package.
+
 ![Vala code autocompletion](https://framapic.org/fO9WNcBbybqD/fbCmOsHPXf9M)
 
 For now, it will show you ...
@@ -12,6 +14,7 @@ For now, it will show you ...
 - Namespaces that can be used, when writing a new `using` directive
 - Properties and methods of a local variable (as on the screenshot)
 - Classes, when creating a new instance
+- Possible methods
 
 It loads suggestions from .vapi files, so if you don't have anything, don't panic and try to change the settings of this package. :smile:
 

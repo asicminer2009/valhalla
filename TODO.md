@@ -2,8 +2,9 @@
 
 *By priority*
 
-- Doc comment coloration
-- Show possible method, constants and variables (static ones, in namespaces)
+- Doc comment coloration -> PR on `language-vala`
+- Supports inherited members
+- Show possible constants and fields (static ones, in namespaces)
 - Show signals
 - Refactoring
 - Creating a child class (or an implementing one) by right-clicking on a class or interface name

@@ -1,4 +1,8 @@
+// This file is for testing purpose.
+
 using Valse;
+using Math;
+
 /**
 * Programm begins here.
 */
@@ -7,8 +11,6 @@ void main () {
     TestClass t = new TestClass (blob);
     t.next.next.next.add (a, b);
 }
-
-
 
 /**
 * Salue une personne.
