@@ -37,6 +37,10 @@
                 "command": "valhalla:new-interface"
             }
           ]
+        },
+        {
+            "label": "Open documentation",
+            "command": "valhalla:documentation"
         }
       ]
     }

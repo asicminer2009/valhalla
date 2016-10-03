@@ -1,6 +1,12 @@
 # Changelog
 
-# 0.5.0
+## 0.11.0 - Complete rewrite
+- Complete rewrite of the suggestions provider (it was broken after Atom 1.8 update). It would be smarter now.
+- Better support for structs and interfaces
+- Documentation viewer ! :book: You can display it by going in the `Vala` menu and then `Documentation`, or by trigerring the `valhalla:documentation` command, using the command palette.
+- Support for enumerations
+
+## 0.5.0
 - Suggestion for instance members, when typing `this`
 - Error if using `this` when not in a class
 - Menu to quickly create new classes or interfaces

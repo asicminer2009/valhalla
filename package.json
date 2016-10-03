@@ -2,7 +2,7 @@
   "name": "valhalla",
   "main": "./lib/valhalla",
   "version": "0.10.0",
-  "description": "Valhalla gives autocompletion to Vala code.",
+  "description": "Paradise for Vala developers.",
   "keywords": [
     "vala",
     "autocomplete",
@@ -19,6 +19,5 @@
         "2.0.0": "getProvider"
       }
     }
-  },
-  "dependencies": {}
+  }
 }

@@ -1,33 +1,52 @@
 // This file is for testing purpose.
 // So do WTF you want here.
 
-// Most of the code doesn't mean anything, don't try to comile it.
+// Most of the code doesn't mean anything, don't try to compile it.
 
-using Valse;
+using Gdl;
+using Linux.Framebuffer.OMAP;
+using GLib;
 using Math;
+using Soup;
+using Cairo;
+using Twitter;
+using Vte;
+using Soup.Form;
+using Vala;
+using Avahi;
 
 /**
 * Programm begins here.
 */
-int main () {
-    Router r = new Router (9000);
-    TestClass t = new TestClass (blob);
-    t.next.next.next.add (a, b);
-    saluer_anglais (name, age);
-    r.register (route, controller);
-    saluer_anglais (name, age);
-    WebView v = new WebView ();
-    int a = 14;
-    a++;
-    print ("%d", a);
+int main (string[] args) {
+    saluer (nom, ref age);
+    Blob bl = new File ();
+    int h = bl.get_size
+    Surface surf = new PdfSurface ();
+    Context ctx = new Context ();
+    string a = ctx.
+    switch (booleen) {
+        case true:
+            print ("hey");
+            break;
+        case false:
+            print ("yo");
+            break;
+        default:
+            print ("oups");
+            break;
+    }
+    TestClass.log_error ();
+    Server serv = new Server ();
 }
 
 /**
 * Logs an error.
 *
-* @eparam err The error to log
+* @param err The error to log
 */
 void error (string err) {
+    err
     print ("[ERROR] %s\n", err);
 }
 
@@ -38,7 +57,7 @@ void error (string err) {
 * @param age Sert à rien, mais amusez vous
 */
 string saluer (string nom, ref int age) {
-    main ();
+
     print (nom);
     return "Bonjour " + nom + " !";
 }

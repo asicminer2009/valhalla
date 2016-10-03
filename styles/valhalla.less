@@ -1,5 +1,9 @@
+@import 'ui-variables';
+
 @signal: #FBC02D;
 @field: #51E876;
+@struct: #FF5033;
+@iface: #FF9900;
 
 autocomplete-suggestion-list {
     .icon.signal {
@@ -10,5 +14,59 @@ autocomplete-suggestion-list {
     .icon.field {
         color: @field;
         background: fadeout(@field, 80%);
+    }
+
+    .icon.struct {
+        color: @struct;
+        background: fadeout(@struct, 80%);
+    }
+
+    .icon.interface {
+        color: @iface;
+        background: fadeout(@iface, 80%);
+    }
+}
+
+.valadoc {
+    overflow: auto;
+    padding: 5% 20%;
+
+    .list-group {
+        .list-item {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: 0.2s all;
+
+            &:hover {
+                background: @background-color-highlight;
+            }
+        }
+    }
+
+    header {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        border-bottom: 1px solid gray;
+        padding: 10px 20%;
+
+        .icon, a {
+            padding: 0px 15px;
+            margin: 0px 0px;
+            transition: all 0.2s;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+
+    .subtitle {
+        font-style: italic;
+        font-weight: 200;
+        color: @text-color-subtle;
     }
 }

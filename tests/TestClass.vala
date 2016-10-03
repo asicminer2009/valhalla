@@ -1,3 +1,15 @@
+public enum Hey {
+    BLOB,
+    POP,
+    PLOUF
+}
+
+enum Jon {
+    FOO,
+    BAR
+}
+
+
 /**
 * A class.
 */
@@ -18,9 +30,10 @@ public class TestClass : Object {
     /**
     * A constructor.
     */
-    public TestClass (string blob) {
+    public TestClass (string blob, int hey, ref bool yo) {
         string hey = this.hello;
         this.add ();
         this.next.log_error (err);
+        this.hello = "hey";
     }
 }
