@@ -1,21 +1,13 @@
-# ![Vala icon](https://elementary.io/images/developer/vala.svg) Valhalla
+# ![V](https://zestedesavoir.com/media/galleries/487/2178d643-9e42-4f94-932c-b38cc4733055.png.60x60_q95_crop.png)alhalla
 
 > Paradise for ~~Vikings~~ Vala developers.
 
-This package provides autocompletion for Vala in atom. It also help you creating new classes or interfaces quickly, through a little menu and have a *Surround with ...* function.
+Valhalla helps you writin Vala. You can get completions (loaded from installed `.vapi` files), create new classes and interfaces quickly and view local documentation.
 
-To make it work, you should first install the [language-vala](https://atom.io/packages/language-vala) package.
+To make it work, you should first install the [language-vala-modern](https://atom.io/packages/language-vala-modern) package.
 
 ![Vala code autocompletion](https://framapic.org/fO9WNcBbybqD/fbCmOsHPXf9M)
 
-For now, it will show you ...
-
-- Local variables
-- Namespaces that can be used, when writing a new `using` directive
-- Properties and methods of a local variable (as on the screenshot)
-- Classes, when creating a new instance
-- Possible methods
-
-It loads suggestions from .vapi files, so if you don't have anything, don't panic and try to change the settings of this package. :smile:
+![Documentation](doc.png)
 
 If you found a bug, or have suggestion please open an issue on GitHub.

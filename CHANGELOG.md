@@ -1,5 +1,8 @@
 # Changelog
 
+# 0.11.1
+- Updated README
+
 ## 0.11.0 - Complete rewrite
 - Complete rewrite of the suggestions provider (it was broken after Atom 1.8 update). It would be smarter now.
 - Better support for structs and interfaces

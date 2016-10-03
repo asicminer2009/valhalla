@@ -1,18 +1,5 @@
 # TODO
 
-## rewrite branch
-
-- [x] Members of variables, properties, fields ...
-- [x] Methods that are accessibles
-- [x] Enums
-- [x] Doc viewer
-- [x] Structs
-- [x] Interfaces
-
-### Bugs
-
-- Type a class name followed by a . (eg `TestClass.`). You get enums values
-
 *By priority*
 
 - Doc comment coloration -> PR on `language-vala-modern`
@@ -29,3 +16,4 @@
 
 - Support unowned keyword (look at gedit-2.20.vapi -> App class, and then look at it in the doc).
 - Create two local variable, `t` and `bt`. Type `bt.`, and you'll also get suggestions for `t.`.
+- Type a class name followed by a . (eg `TestClass.`). You get enums values
