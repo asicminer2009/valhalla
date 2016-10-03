@@ -8,6 +8,6 @@ To make it work, you should first install the [language-vala-modern](https://ato
 
 ![Vala code autocompletion](https://framapic.org/fO9WNcBbybqD/fbCmOsHPXf9M)
 
-![Documentation](doc.png)
+![Documentation](https://github.com/Bat41/valhalla/blob/master/doc.png?raw=true)
 
 If you found a bug, or have suggestion please open an issue on GitHub.
