@@ -1,0 +1,184 @@
+comment: 'Used to highlight Valadoc comments'
+fileTypes: []
+name: "JavaDoc"
+patterns: [
+  {
+    begin: "(/\\*\\*)\\s*$"
+    beginCaptures:
+      "1":
+        name: "punctuation.definition.comment.begin.javadoc"
+    contentName: "text.html"
+    end: "\\*/"
+    endCaptures:
+      "0":
+        name: "punctuation.definition.comment.end.javadoc"
+    name: "comment.block.documentation.javadoc"
+    patterns: [
+      {
+        include: "#inline"
+      }
+      {
+        begin: "((\\@)param)"
+        beginCaptures:
+          "1":
+            name: "keyword.other.documentation.param.javadoc"
+          "2":
+            name: "punctuation.definition.keyword.javadoc"
+        end: "(?=^\\s*\\*?\\s*@|\\*/)"
+        name: "meta.documentation.tag.param.javadoc"
+        patterns: [
+          {
+            include: "#inline"
+          }
+        ]
+      }
+      {
+        begin: "((\\@)return)"
+        beginCaptures:
+          "1":
+            name: "keyword.other.documentation.return.javadoc"
+          "2":
+            name: "punctuation.definition.keyword.javadoc"
+        end: "(?=^\\s*\\*?\\s*@|\\*/)"
+        name: "meta.documentation.tag.return.javadoc"
+        patterns: [
+          {
+            include: "#inline"
+          }
+        ]
+      }
+      {
+        begin: "((\\@)throws)"
+        beginCaptures:
+          "1":
+            name: "keyword.other.documentation.throws.javadoc"
+          "2":
+            name: "punctuation.definition.keyword.javadoc"
+        end: "(?=^\\s*\\*?\\s*@|\\*/)"
+        name: "meta.documentation.tag.throws.javadoc"
+        patterns: [
+          {
+            include: "#inline"
+          }
+        ]
+      }
+      {
+        begin: "((\\@)see)"
+        beginCaptures:
+          "1":
+            name: "keyword.other.documentation.see.javadoc"
+          "2":
+            name: "punctuation.definition.keyword.javadoc"
+        end: "(?=^\\s*\\*?\\s*@|\\*/)"
+        name: "meta.documentation.tag.see.javadoc"
+        patterns: [
+          {
+            include: "#inline"
+          }
+        ]
+      }
+      {
+        begin: "((\\@)since)"
+        beginCaptures:
+          "1":
+            name: "keyword.other.documentation.since.javadoc"
+          "2":
+            name: "punctuation.definition.keyword.javadoc"
+        end: "(?=^\\s*\\*?\\s*@|\\*/)"
+        name: "meta.documentation.tag.since.javadoc"
+        patterns: [
+          {
+            include: "#inline"
+          }
+        ]
+      }
+      {
+        begin: "((\\@)deprecated)"
+        beginCaptures:
+          "1":
+            name: "keyword.other.documentation.deprecated.javadoc"
+          "2":
+            name: "punctuation.definition.keyword.javadoc"
+        end: "(?=^\\s*\\*?\\s*@|\\*/)"
+        name: "meta.documentation.tag.deprecated.javadoc"
+        patterns: [
+          {
+            include: "#inline"
+          }
+        ]
+      }
+      {
+        captures:
+          "1":
+            name: "keyword.other.documentation.custom.javadoc"
+          "2":
+            name: "punctuation.definition.keyword.javadoc"
+        match: "((\\@)\\S+)\\s"
+      }
+    ]
+  }
+]
+repository:
+  inline:
+    patterns: [
+      {
+        include: "#inline-formatting"
+      }
+      {
+        comment: '''
+          This prevents < characters in commented source from starting
+          								a tag that will not end. List of allowed tags taken from
+          								java checkstyle.
+        '''
+        match: "<(?!(a|abbr|acronym|address|area|b|bdo|big|blockquote|br|caption|cite|code|colgroup|dd|del|div|dfn|dl|dt|em|fieldset|font|h1toh6|hr|i|img|ins|kbd|li|ol|p|pre|q|samp|small|span|strong|sub|sup|table|tbody|td|tfoot|th|thread|tr|tt|u|ul)\\b[^>]*>)"
+      }
+      {
+        include: "text.html.basic"
+      }
+      {
+        match: "((https?|s?ftp|ftps|file|smb|afp|nfs|(x-)?man|gopher|txmt)://|mailto:)[-:@a-zA-Z0-9_.,~%+/?=&#;]+(?<![-.,?:#;])"
+        name: "markup.underline.link"
+      }
+      {
+          match: "^\\s*\\* ([^@].*)"
+          captures:
+              1:
+                name: "meta.documentation.tag.description"
+          name: "meta.documentation.description"
+          include: '#inline-formatting'
+      }
+    ]
+  "inline-formatting":
+    patterns: [
+      {
+        captures:
+          "1":
+            name: "punctuation.definition.tag.begin.javadoc"
+          "2":
+            name: "keyword.other.documentation.directive.inheritDoc.javadoc"
+          "3":
+            name: "punctuation.definition.keyword.javadoc"
+          "4":
+            name: "punctuation.definition.tag.end.javadoc"
+        match: "(\\{)((\\@)inheritDoc)(\\})"
+        name: "meta.tag.template.inheritDoc.javadoc"
+      }
+      {
+        captures:
+          "1":
+            name: "punctuation.definition.tag.begin.javadoc"
+          "2":
+            name: "keyword.other.documentation.directive.link.javadoc"
+          "3":
+            name: "punctuation.definition.keyword.javadoc"
+          "4":
+            name: "markup.underline.link.javadoc"
+          "5":
+            name: "string.other.link.title.javadoc"
+          "6":
+            name: "punctuation.definition.tag.end.javadoc"
+        match: "(\\{)((\\@)link)(?:\\s+(\\S+?))?(?:\\s+(.+?))?\\s*(\\})"
+        name: "meta.tag.template.link.javadoc"
+      }
+    ]
+scopeName: "text.html.javadoc"
