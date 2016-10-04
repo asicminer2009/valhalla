@@ -41,12 +41,12 @@ int main (string[] args) {
 }
 
 /**
-* Logs an error.
+* Logs an error. Or just use {@link GLib.error}
 *
+* @return hey hh
 * @param err The error to log
 */
 void error (string err) {
-    err
     print ("[ERROR] %s\n", err);
 }
 
@@ -57,7 +57,6 @@ void error (string err) {
 * @param age Sert à rien, mais amusez vous
 */
 string saluer (string nom, ref int age) {
-
     print (nom);
     return "Bonjour " + nom + " !";
 }
