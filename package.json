@@ -1,23 +1,34 @@
 {
-  "name": "valhalla",
-  "main": "./lib/valhalla",
-  "version": "0.11.4",
-  "description": "Paradise for Vala developers.",
-  "keywords": [
-    "vala",
-    "autocomplete",
-    "autocomplete-plus"
-  ],
-  "repository": "https://github.com/Bat41/valhalla",
-  "license": "LGPLv3",
-  "engines": {
-    "atom": ">=1.0.0 <2.0.0"
-  },
-  "providedServices": {
-    "autocomplete.provider": {
-      "versions": {
-        "2.0.0": "getProvider"
-      }
+    "name": "valhalla",
+    "main": "./lib/valhalla",
+    "version": "0.11.4",
+    "description": "Paradise for Vala developers.",
+    "keywords": [
+        "vala",
+        "autocomplete",
+        "autocomplete-plus"
+    ],
+    "repository": "https://github.com/Bat41/valhalla",
+    "license": "LGPLv3",
+    "engines": {
+        "atom": ">=1.0.0 <2.0.0"
+    },
+    "providedServices": {
+        "tool-bar": {
+            "versions": {
+                "^0 || ^1": "consumeToolBar"
+            }
+        },
+        "autocomplete.provider": {
+            "versions": {
+                "2.0.0": "getProvider"
+            }
+        },
+        "builder": {
+            "description": "Let you build your Vala project using valac.",
+            "versions": {
+                "2.0.0": "getBuilder"
+            }
+        }
     }
-  }
 }

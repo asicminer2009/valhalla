@@ -30,10 +30,10 @@ public class TestClass : Object {
     /**
     * A constructor.
     */
-    public TestClass (string blob, int hey, ref bool yo) {
+    public TestClass (string blob, int zoup, ref bool yo) {
         string hey = this.hello;
-        this.add ();
-        this.next.log_error (err);
+        this.add (1, 2);
+        TestClass.log_error ("hdjdd");
         this.hello = "hey";
     }
 }

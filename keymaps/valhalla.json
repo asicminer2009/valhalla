@@ -1,5 +1,6 @@
 {
   "atom-workspace": {
-    "ctrl-n": "valhalla:new-class"
+    "ctrl-h": "valhalla:new-class",
+    "ctrl-alt-w": "valhalla:documentation"
   }
 }
