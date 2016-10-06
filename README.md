@@ -1,5 +1,7 @@
 # ![V](https://zestedesavoir.com/media/galleries/487/2178d643-9e42-4f94-932c-b38cc4733055.png.60x60_q95_crop.png)alhalla
 
+[![Join the chat at https://gitter.im/valhalla-chat/Lobby](https://badges.gitter.im/valhalla-chat/Lobby.svg)](https://gitter.im/valhalla-chat/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 > Paradise for ~~Vikings~~ Vala developers.
 
 Valhalla helps you writin Vala. You can get completions (loaded from installed `.vapi` files), create new classes and interfaces quickly and view local documentation.
