@@ -1,7 +1,25 @@
 # Changelog
 
-# 0.11.1
+# 0.13.0
+- Making enumerations less invasives
+- Suggesting namespaces in project when writing a new one (e.g. when writing `namespace F...`)
+- Fixed the "Surround with..." function
+
+# 0.12.0
+- Support for atom-builder. You can now build your app in one click if you atom-builder installed.
+
+# 0.11.4
+- Support for the `unowned` keyword
+- Valadoc comments highlighting
+
+# 0.11.3
 - Updated README
+
+# 0.11.2
+- Removed TODO
+
+# 0.11.1
+- Updated README and TODO
 
 ## 0.11.0 - Complete rewrite
 - Complete rewrite of the suggestions provider (it was broken after Atom 1.8 update). It would be smarter now.
