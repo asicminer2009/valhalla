@@ -1,6 +1,8 @@
 // This file is for testing purpose.
 // So do WTF you want here.
 
+using Gee;
+
 // Most of the code doesn't mean anything, don't try to compile it.
 namespace Valhalla.Tests {
 
