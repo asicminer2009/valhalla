@@ -1,5 +1,12 @@
 # Changelog
 
+# 0.14.0
+- Support for generics types
+- Methods suggestions now shows you parameters
+- Symbols are now loaded from every Vala file you can see in your tree view (project's files)
+- You can specify multiple directories for `.vapi` files in your settings. On Linux, `.vapi` files are also loaded from
+`/usr/share/vala/vapi/`.
+
 # 0.13.0
 - Making enumerations less invasives
 - Suggesting namespaces in project when writing a new one (e.g. when writing `namespace F...`)
