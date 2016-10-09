@@ -11,9 +11,14 @@ namespace Valhalla.Tests {
     */
     int main (string[] args) {
         int a = 0;
+        TestClass tc = new TestClass (blob, zoup, ref yo);
+        tc.add (1, 3);
         print (saluer ("Bat'", ref a));
         error ("Bug !");
         return 1;
+        ArrayList<string> arr = new ArrayList (null);
+        arr.add ("hey");
+        HashMap<int, string> map = new HashMap (null, null, null);
     }
 
     /**
