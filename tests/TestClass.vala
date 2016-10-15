@@ -34,6 +34,10 @@ public class TestClass : Object {
         return a + b;
     }
 
+    private void blob () {
+        print ("BLOB\n");
+    }
+
     public string hello {get; set;}
 
     public static void log_error (string err) {
@@ -49,5 +53,6 @@ public class TestClass : Object {
         TestClass.log_error ("hdjdd");
         this.hello = "hey";
         var plop = GtkInputMode.SCREEN;
+        this.blob ();
     }
 }

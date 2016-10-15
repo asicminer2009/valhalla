@@ -2,6 +2,8 @@
 // So do WTF you want here.
 
 using Gee;
+using Gdk;
+using ZLib;
 
 // Most of the code doesn't mean anything, don't try to compile it.
 namespace Valhalla.Tests {
@@ -19,6 +21,9 @@ namespace Valhalla.Tests {
         ArrayList<string> arr = new ArrayList (null);
         arr.add ("hey");
         HashMap<int, string> map = new HashMap (null, null, null);
+        Canvas cv = new Canvas();
+        cv.x1 = 12.5;
+        cv.unregister_item(model);
     }
 
     /**
@@ -36,8 +41,8 @@ namespace Valhalla.Tests {
     *
     * @param nom Un nom
     * @param age Sert à rien, mais amusez vous
+    * @return La phrase pour saluer la personne.
     */
-    [Version (deprectated = true, deprecated_since = "now", replacement = "nothing")]
     string saluer (string nom, ref int age) {
         print (nom);
         return "Bonjour " + nom + " !";
