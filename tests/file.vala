@@ -20,6 +20,7 @@ namespace Valhalla.Tests {
         return 1;
         ArrayList<string> arr = new ArrayList (null);
         arr.add ("hey");
+        arr.add_all();
         HashMap<int, string> map = new HashMap (null, null, null);
         Canvas cv = new Canvas();
         cv.x1 = 12.5;
