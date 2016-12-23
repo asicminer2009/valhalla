@@ -1,6 +1,10 @@
 'use babel';
 
 import Valhalla from '../lib/valhalla';
+import ValaProvider from '../lib/provider';
+import ScopeManager from '../lib/scopes';
+import * as fs from 'fs';
+import * as path from 'path';
 
 // Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
 //
@@ -8,66 +12,56 @@ import Valhalla from '../lib/valhalla';
 // or `fdescribe`). Remove the `f` to unfocus the block.
 
 describe('Valhalla', () => {
-  let workspaceElement, activationPromise;
+    let activationPromise;
 
-  beforeEach(() => {
-    workspaceElement = atom.views.getView(atom.workspace);
-    activationPromise = atom.packages.activatePackage('valhalla');
-  });
-
-  describe('when the valhalla:toggle event is triggered', () => {
-    it('hides and shows the modal panel', () => {
-      // Before the activation event the view is not on the DOM, and no panel
-      // has been created
-      expect(workspaceElement.querySelector('.valhalla')).not.toExist();
-
-      // This is an activation event, triggering it will cause the package to be
-      // activated.
-      atom.commands.dispatch(workspaceElement, 'valhalla:toggle');
-
-      waitsForPromise(() => {
-        return activationPromise;
-      });
-
-      runs(() => {
-        expect(workspaceElement.querySelector('.valhalla')).toExist();
-
-        let superValaElement = workspaceElement.querySelector('.valhalla');
-        expect(superValaElement).toExist();
-
-        let superValaPanel = atom.workspace.panelForItem(superValaElement);
-        expect(superValaPanel.isVisible()).toBe(true);
-        atom.commands.dispatch(workspaceElement, 'valhalla:toggle');
-        expect(superValaPanel.isVisible()).toBe(false);
-      });
+    beforeEach(() => {
+        activationPromise = atom.packages.activatePackage('valhalla');
     });
+    it('can determine the type of an expression', () => {
+        const manager = new ScopeManager();
+        const vapiDir = atom.config.get('valhalla.vapiDir');
 
-    it('hides and shows the view', () => {
-      // This test shows you an integration test testing at the view level.
+        const explore = (dir) => {
+            files = fs.readdirSync(dir);
+            for(const file of files) {
 
-      // Attaching the workspaceElement to the DOM is required to allow the
-      // `toBeVisible()` matchers to work. Anything testing visibility or focus
-      // requires that the workspaceElement is on the DOM. Tests that attach the
-      // workspaceElement to the DOM are generally slower than those off DOM.
-      jasmine.attachToDOM(workspaceElement);
+                if(fs.statSync(path.join(dir, file)).isDirectory()) {
+                    explore(path.join(dir, file));
+                }
 
-      expect(workspaceElement.querySelector('.valhalla')).not.toExist();
+                if(file.endsWith('.vala') || file.endsWith('.vapi')) {
+                    let content = fs.readFileSync(path.join(dir, file), 'utf-8');
+                    manager.parse(content, path.join(dir, file));
+                }
+            }
+        }
 
-      // This is an activation event, triggering it causes the package to be
-      // activated.
-      atom.commands.dispatch(workspaceElement, 'valhalla:toggle');
+        for(const project of atom.project.getPaths()) {
+            explore(project);
+        }
+        // loading symbols from .vapi
+        for(const dir of vapiDir.split(path.delimiter)) {
+            fs.readdir(dir,(err, files) => {
+                if(err) {
+                    console.error(err);
+                    return;
+                }
 
-      waitsForPromise(() => {
-        return activationPromise;
-      });
+                for(file of files) {
+                    if(file.endsWith('.vapi')) {
+                        let content = fs.readFileSync(path.join(dir, file), 'utf-8');
+                        manager.parse(content, file);
+                    }
+                }
+            });
+        }
 
-      runs(() => {
-        // Now we can test for view visibility
-        let superValaElement = workspaceElement.querySelector('.valhalla');
-        expect(superValaElement).toBeVisible();
-        atom.commands.dispatch(workspaceElement, 'valhalla:toggle');
-        expect(superValaElement).not.toBeVisible();
-      });
+        const provider = new ValaProvider(manager.scopes);
+
+        expect(provider.getType('ArrayList<string>', 'add(gg)', ['Gee']).base.data.name).toEqual('void');
+        expect(provider.getType('string', 'up().down()', ['GLib']).base.data.name).toEqual('string');
+        const a = provider.getType('ArrayList<string>', '', ['Gee']).generics[0];
+        console.log (a);
+        expect(a.data.name).toEqual('string');
     });
-  });
 });

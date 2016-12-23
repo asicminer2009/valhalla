@@ -11,16 +11,11 @@
     "autocomplete-plus"
   ],
   "repository": "https://github.com/Bat41/valhalla",
-  "license": "LGPLv3",
+  "license": "LGPLv3.0",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
   "providedServices": {
-    "tool-bar": {
-      "versions": {
-        "1.0.0": "consumeToolBar"
-      }
-    },
     "autocomplete.provider": {
       "versions": {
         "2.0.0": "getProvider"
@@ -32,5 +27,20 @@
         "2.0.0": "getBuilder"
       }
     }
+  },
+  "consumedServices": {
+    "tool-bar": {
+      "versions": {
+        "1.0.0": "consumeToolBar"
+      }
+    },
+    "linter-indie": {
+      "versions": {
+        "1.0.0": "consumeLinter"
+      }
+    }
+  },
+  "dependencies": {
+    "request": "^2.79.0"
   }
 }
