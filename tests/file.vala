@@ -2,6 +2,7 @@
 // So do WTF you want here.
 
 using Gee;
+using Gee.Utils;
 using Gdk;
 using ZLib;
 
@@ -12,19 +13,7 @@ namespace Valhalla.Tests {
     * Programm begins here.
     */
     int main (string[] args) {
-        int a = 0;
-        TestClass tc = new TestClass (blob, zoup, ref yo);
-        tc.add (1, 3);
-        print (saluer ("Bat'", ref a));
-        error ("Bug !");
-        return 1;
-        ArrayList<string> arr = new ArrayList (null);
-        arr.add ("hey");
-        arr.add_all();
-        HashMap<int, string> map = new HashMap (null, null, null);
-        Canvas cv = new Canvas();
-        cv.x1 = 12.5;
-        cv.unregister_item(model);
+        
     }
 
     /**
