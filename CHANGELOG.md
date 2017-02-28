@@ -1,5 +1,15 @@
 # Changelog
 
+# 1.0.0
+
+- Completly rewritten the parser: it should have a way less bugs
+- Show errors in real time with [linter](https://atom.io/packages/linter)
+- We now use [etch](https://github.com/atom/etch) for our views. It shouldn't change a lot of things from the user's side
+- We check the code's style and give some hints (e.g. you are warned if you write two times the same `using` directive)
+- Support for error domains
+- Autocompletion for Valadoc comments
+
+
 # 0.14.0
 - Support for generics types
 - Methods suggestions now shows you parameters
@@ -13,7 +23,7 @@
 - Fixed the "Surround with..." function
 
 # 0.12.0
-- Support for atom-builder. You can now build your app in one click if you atom-builder installed.
+- Support for atom-builder. You can now build your app in one click if you have atom-builder installed.
 
 # 0.11.4
 - Support for the `unowned` keyword
@@ -40,8 +50,8 @@
 - Menu to quickly create new classes or interfaces
 
 ## 0.4.0
-- Added support of local variables
-- Added support of local variables properties and methods
+- Added support for local variables
+- Added support for local variables properties and methods
 
 ## 0.3.2
 * Added support for delegates and signals

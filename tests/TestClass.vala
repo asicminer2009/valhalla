@@ -19,7 +19,7 @@ public class TestClass : Object {
     *
     * Yet Another Test Property.
     */
-    public TestClass next {get; set;}
+    public TestClass next { get; set; }
 
     /**
     * Adds two numbers
@@ -36,9 +36,10 @@ public class TestClass : Object {
 
     private void blob () {
         print ("BLOB\n");
+        this.h
     }
 
-    public string hello {get; set;}
+    public string hello { get; set; }
 
     public static void log_error (string err) {
         print ("[ERROR] %s \n", err);

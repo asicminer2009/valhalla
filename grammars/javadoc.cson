@@ -1,6 +1,6 @@
 comment: 'Used to highlight Valadoc comments'
 fileTypes: []
-name: "JavaDoc"
+name: "JavaDoc/Valadoc"
 patterns: [
   {
     begin: "(/\\*\\*)\\s*$"

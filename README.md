@@ -1,19 +1,19 @@
-**WARNING** This project is no longer maintened.
+# ![Valhalla](valhalla.png)
 
------
-
-# ![V](https://zestedesavoir.com/media/galleries/487/2178d643-9e42-4f94-932c-b38cc4733055.png.60x60_q95_crop.png)alhalla
-
+<p style="text-align: center;">
 [![Join the chat at https://gitter.im/valhalla-chat/Lobby](https://badges.gitter.im/valhalla-chat/Lobby.svg)](https://gitter.im/valhalla-chat/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+</p>
 
-> Paradise for ~~Vikings~~ Vala developers.
+This package aims to turn Atom into a powerful Vala IDE. It provides you autocompletion as you write code. You can also access a local reference (with `valhalla:documentation`).
 
-Valhalla helps you writin Vala. You can get completions (loaded from installed `.vapi` files), create new classes and interfaces quickly and view local documentation.
+To make it work, you should first install the [language-vala-modern](https://atom.io/packages/language-vala-modern) package. It is also recommended to install [linter](https://atom.io/packages/linter) to see errors and warnings as you write code.
 
-To make it work, you should first install the [language-vala-modern](https://atom.io/packages/language-vala-modern) package.
+This package can eventually be combined with [builder](https://atom.io/packages/builder) and [tool-bar]((https://atom.io/packages/tool-bar)
 
-![Vala code autocompletion](https://framapic.org/fO9WNcBbybqD/fbCmOsHPXf9M)
+![Vala code autocompletion](autocomplete.png)
 
-![Documentation](https://github.com/Bat41/valhalla/blob/master/doc.png?raw=true)
+![Documentation](doc.png)
 
-If you found a bug, or have suggestion please open an issue on GitHub.
+This package could slow down a little bit Atom's startup because it parses all the `.vapi` files you have installed on your system (around 200).
+
+If you found a bug or have suggestion, please open an issue on GitHub.

@@ -1,10 +1,10 @@
 {
-    "atom-workspace": {
-        "ctrl-h": "valhalla:new-class",
-        "ctrl-alt-w": "valhalla:documentation"
-    },
-    "atom-workspace atom-text-editor:not([mini])": {
-        "ctrl-j": "unset!",
-        "ctrl-j": "valhalla:surround"
-    }
+  "atom-workspace": {
+    "ctrl-h": "valhalla:new-class",
+    "ctrl-alt-w": "valhalla:documentation"
+  },
+  "atom-workspace atom-text-editor:not([mini])": {
+    "ctrl-j": "unset!",
+    "ctrl-j": "valhalla:surround"
+  }
 }

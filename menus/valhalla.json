@@ -4,13 +4,13 @@
       {
         "label": "Create a new Vala class",
         "command": "valhalla:new-class"
-    },
-    {
+      },
+      {
         "label": "Surround with ...",
         "command": "valhalla:surround"
-    }
-  ],
-  ".tree-view li.entry": [
+      }
+    ],
+    ".tree-view li.entry": [
       {
         "label": "Create a new class",
         "command": "valhalla:new-class"
@@ -19,28 +19,32 @@
           "label": "Create a new interface",
           "command": "valhalla:new-interface"
       }
-  ]
+    ]
   },
   "menu": [
     {
       "label": "Vala",
       "submenu": [
         {
-          "label": "Create new ...",
+          "label": "Create new...",
           "submenu": [
             {
               "label": "Class",
               "command": "valhalla:new-class"
             },
             {
-                "label": "Interface",
-                "command": "valhalla:new-interface"
+              "label": "Interface",
+              "command": "valhalla:new-interface"
             }
           ]
         },
         {
-            "label": "Open documentation",
-            "command": "valhalla:documentation"
+          "label": "Open documentation",
+          "command": "valhalla:documentation"
+        },
+        {
+          "label": "Clear errors",
+          "command": "valhalla:clear-errors"
         }
       ]
     }

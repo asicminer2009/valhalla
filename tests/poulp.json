@@ -1,0 +1,9 @@
+{
+  "name": "valhalla-tests",
+  "version": "0.1.0",
+  "description": "Tests files for Valhalla. This file is here to list dependencies",
+  "dependencies": {
+    "valum-0.4": "*",
+    "valse": "*"
+  }
+}

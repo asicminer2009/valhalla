@@ -1,48 +1,19 @@
-// This file is for testing purpose.
-// So do WTF you want here.
+/**
+* This file is here to test the Valhalla features.
+*
+* So yes, the code here doesn't not mean anything and probably doesn't even compile.
+*/
 
 using Gee;
-using Gee.Utils;
-using Gdk;
-using ZLib;
+using Compose;
+using Toml;
 
-// Most of the code doesn't mean anything, don't try to compile it.
-namespace Valhalla.Tests {
+namespace Valhalla {
 
     /**
-    * Programm begins here.
+    * It all begins here.
     */
-    int main (string[] args) {
-        
+    void main (string[] args) {
+        pri
     }
-
-    /**
-    * Logs an error. Or just use {@link GLib.error}
-    *
-    * @return hey hh
-    * @param err The error to log
-    */
-    void error (string err) {
-        print ("[ERROR] %s\n", err);
-    }
-
-    /**
-    * Salue une personne.
-    *
-    * @param nom Un nom
-    * @param age Sert à rien, mais amusez vous
-    * @return La phrase pour saluer la personne.
-    */
-    string saluer (string nom, ref int age) {
-        print (nom);
-        return "Bonjour " + nom + " !";
-    }
-
-    /**
-    * Salue une personne, en anglais.
-    */
-    string saluer_anglais (string name, int age) {
-        return "Hello " + name + " !";
-    }
-
 }
