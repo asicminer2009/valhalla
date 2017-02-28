@@ -1,9 +1,17 @@
 # ![Valhalla](https://raw.githubusercontent.com/Bat41/valhalla/master/valhalla.png)
 
 <p align="center">
+  <a href="https://gitter.im/valhalla-chat/Lobby">
+    <img align="center" alt="Gitter badge" src="https://img.shields.io/gitter/room/valhalla-chat/Lobby.svg?style=flat-square"/>
+  </a>
 
-[![Join the chat at https://gitter.im/valhalla-chat/Lobby](https://badges.gitter.im/valhalla-chat/Lobby.svg)](https://gitter.im/valhalla-chat/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+  <a href="https://atom.io/packages/valhalla">
+    <img align="center" alt="apm version" src="https://img.shields.io/apm/v/valhalla.svg?style=flat-square" />
+  </a>
 
+  <a href="https://atom.io/packages/valhalla">
+    <img align="center" alt="apm downloads" src="https://img.shields.io/apm/dm/valhalla.svg?style=flat-square" />
+  </a>
 </p>
 
 This package aims to turn Atom into a powerful Vala IDE. It provides you autocompletion as you write code. You can also access a local reference (with `valhalla:documentation`).
