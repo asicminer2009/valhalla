@@ -8,10 +8,11 @@
     "valadoc",
     "documentation",
     "autocomplete",
-    "autocomplete-plus"
+    "autocomplete-plus",
+    "linter"
   ],
   "repository": "https://github.com/Bat41/valhalla",
-  "license": "LGPLv3.0",
+  "license": "LGPL-3.0",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
@@ -22,7 +23,7 @@
       }
     },
     "builder": {
-      "description": "Let you build your Vala project using valac.",
+      "description": "Let you build your Vala project using valac or poulp.",
       "versions": {
         "2.0.0": "getBuilder"
       }
@@ -38,9 +39,22 @@
       "versions": {
         "1.0.0": "consumeLinter"
       }
+    },
+    "busy": {
+      "versions": {
+        "^1.0.0": "consumeBusy"
+      }
     }
   },
   "dependencies": {
+    "etch": "^0.8.0",
     "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.14.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "^6.10.0",
+    "eslint-plugin-standard": "^2.0.1"
   }
 }
