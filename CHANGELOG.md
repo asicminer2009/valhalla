@@ -1,5 +1,13 @@
 # Changelog
 
+# 1.1.0
+
+- **BUG** Fixed #35
+- Added a symbol view to quickly navigate through files. Toggle it with Ctrl+Alt+N when in a Vala file. #34
+- Added a new rule to the linter: no trailing whitespaces
+- Create a child class by right-clicking on a class declaration #13
+
+
 # 1.0.0
 
 - Completly rewritten the parser: it should have a way less bugs

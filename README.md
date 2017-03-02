@@ -26,4 +26,6 @@ This package can eventually be combined with [builder](https://atom.io/packages/
 
 This package could slow down a little bit Atom's startup because it parses all the `.vapi` files you have installed on your system (around 200).
 
+The icons are from [Valadoc.org](http://valadoc.org).
+
 If you found a bug or have suggestion, please open an issue on GitHub.
