@@ -19,6 +19,12 @@
           "label": "Create a new interface",
           "command": "valhalla:new-interface"
       }
+    ],
+    ".vala-symbols li": [
+      {
+        "label": "Show in the documentation",
+        "command": "valhalla:show-in-documentation"
+      }
     ]
   },
   "menu": [

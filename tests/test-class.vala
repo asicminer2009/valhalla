@@ -1,3 +1,16 @@
+namespace A {
+    class B {
+        enum C {
+            D,
+            E,
+            F
+        }
+    }
+    void method () {
+        return;
+    }
+}
+
 public enum Hey {
     BLOB,
     POP,
@@ -12,7 +25,7 @@ enum Jon {
 /**
 * A class.
 */
-public class TestClass : Object {
+public class TestClass : Object, Glop {
 
     /**
     * YATP
@@ -41,6 +54,14 @@ public class TestClass : Object {
 
     public string hello { get; set; }
 
+    public signal void foo ();
+
+    public delegate G Func<G> ();
+
+    public int number;
+
+    public const double PI;
+
     public static void log_error (string err) {
         print ("[ERROR] %s \n", err);
     }
@@ -55,5 +76,23 @@ public class TestClass : Object {
         this.hello = "hey";
         var plop = GtkInputMode.SCREEN;
         this.blob ();
+    }
+}
+
+interface Glop {
+    public abstract void is_glop (Object obj);
+}
+
+struct Point {
+    int x;
+    int y;
+
+    Point add (Point other) {
+        return Point (this.x + other.x, this.y + other.y);
+    }
+
+    Point (int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 }

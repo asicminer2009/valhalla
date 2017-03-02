@@ -3,8 +3,9 @@
     "ctrl-h": "valhalla:new-class",
     "ctrl-alt-w": "valhalla:documentation"
   },
-  "atom-workspace atom-text-editor:not([mini])": {
+  "atom-workspace atom-text-editor:not([mini])[data-grammar=\"source vala\"]": {
     "ctrl-j": "unset!",
-    "ctrl-j": "valhalla:surround"
+    "ctrl-j": "valhalla:surround",
+    "ctrl-alt-n": "valhalla:toggle-symbols-list"
   }
 }
