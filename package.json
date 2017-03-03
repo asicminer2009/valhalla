@@ -1,7 +1,7 @@
 {
   "name": "valhalla",
   "main": "./lib/valhalla",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Paradise for Vala developers.",
   "keywords": [
     "vala",
