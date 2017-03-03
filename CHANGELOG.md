@@ -6,6 +6,7 @@
 - Added a symbol view to quickly navigate through files. Toggle it with Ctrl+Alt+N when in a Vala file. #34
 - Added a new rule to the linter: no trailing whitespaces
 - Create a child class by right-clicking on a class declaration #13
+- Added icons from Valadoc to the local reference
 
 
 # 1.0.0
