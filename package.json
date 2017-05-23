@@ -37,18 +37,12 @@
     },
     "linter-indie": {
       "versions": {
-        "1.0.0": "consumeLinter"
-      }
-    },
-    "busy": {
-      "versions": {
-        "^1.0.0": "consumeBusy"
+        "2.0.0": "consumeLinter"
       }
     }
   },
   "dependencies": {
-    "etch": "^0.8.0",
-    "request": "^2.79.0"
+    "etch": "^0.8.0"
   },
   "devDependencies": {
     "eslint": "^3.14.0",

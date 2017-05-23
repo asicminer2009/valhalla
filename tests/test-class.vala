@@ -1,3 +1,5 @@
+
+
 namespace A {
     class B {
         enum C {
@@ -47,9 +49,13 @@ public class TestClass : Object, Glop {
         return a + b;
     }
 
+    public bool is_glop () {
+        return true;
+    }
+
     private void blob () {
         print ("BLOB\n");
-        this.h
+        this.hello;
     }
 
     public string hello { get; set; }
@@ -60,7 +66,7 @@ public class TestClass : Object, Glop {
 
     public int number;
 
-    public const double PI;
+    public const double PI = 3.1415;
 
     public static void log_error (string err) {
         print ("[ERROR] %s \n", err);
@@ -73,13 +79,12 @@ public class TestClass : Object, Glop {
         string hey = this.hello;
         this.add (1, 2);
         TestClass.log_error ("hdjdd");
-        this.hello = "hey";
-        var plop = GtkInputMode.SCREEN;
+        this.hello = "hey" + hey;
         this.blob ();
     }
 }
 
-interface Glop {
+public interface Glop {
     public abstract void is_glop (Object obj);
 }
 
