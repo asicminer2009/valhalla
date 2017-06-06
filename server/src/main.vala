@@ -1,17 +1,29 @@
-using Soup;
-using Json;
-using Vala;
-using Gee;
+/**
+* The Valhalla server, handling requests and managing the {@link Vala.CodeContext}
+*/
+public class Valhalla.Service : Soup.Server {
 
-public class Service : Server {
-
+    /**
+    * When the server needs update, the code context will be refreshed before doing anything.
+    */
     public bool needs_update { get; set; }
 
-    private CodeContext code_context { get; set; }
+    /**
+    * The code context of the project handled by the server.
+    */
+    private Vala.CodeContext code_context { get; set; }
 
+    /**
+    * Serialize errors and warnings as JSON.
+    */
     private JsonReport report { get; set; default = new JsonReport (); }
 
-    private Gee.HashMap<int, Symbol> last_symbols { get; set; }
+    /**
+    * The last symbol map (which is the valid one).
+    *
+    * @see Valhalla.JsonAST.symbols
+    */
+    private Gee.HashMap<int, Vala.Symbol> last_symbols { get; set; }
 
     Gee.HashSet<string> files = new Gee.HashSet<string> ();
     Gee.HashSet<string> pkgs = new Gee.HashSet<string> ();
@@ -19,20 +31,23 @@ public class Service : Server {
     public Service (int port = 8808) {
         GLib.Object (port: port);
         assert (this != null);
-        this.add_handler ("/ast", ast_handler);
-        this.add_handler ("/refresh", refresh_handler);
-        this.add_handler ("/options", options_handler);
-        this.add_handler ("/errors", errors_handler);
-        this.add_handler ("/symbol", symbol_handler);
-        this.init_context ();
-        this.notify["needs-update"].connect(() => {
-            if (this.needs_update) {
+        add_handler ("/ast", ast_handler);
+        add_handler ("/refresh", refresh_handler);
+        add_handler ("/options", options_handler);
+        add_handler ("/errors", errors_handler);
+        add_handler ("/symbol", symbol_handler);
+        init_context ();
+        notify["needs-update"].connect(() => {
+            if (needs_update) {
                 print ("[[UPDATED]]\n");
             }
         });
     }
 
-    public static void ast_handler (Server _serv, Soup.Message msg, string path, HashTable<string, string>? query, ClientContext ctx) {
+    /**
+    * Serves the JSON AST
+    */
+    public static void ast_handler (Soup.Server _serv, Soup.Message msg) {
         var serv = (Service)_serv;
         if (serv.needs_update) {
             serv.init_context ();
@@ -41,14 +56,20 @@ public class Service : Server {
         msg.set_status (200);
     }
 
-    public static void refresh_handler (Server _serv, Soup.Message msg, string path, HashTable<string, string>? query, ClientContext ctx) {
+    /**
+    * Force refreshing the code context
+    */
+    public static void refresh_handler (Soup.Server _serv, Soup.Message msg) {
         var serv = (Service)_serv;
         serv.needs_update = true;
         msg.set_response ("application/json", Soup.MemoryUse.COPY, "{ \"status\": \"ok\" }".data);
         msg.set_status (200);
     }
 
-    public static void options_handler (Server _serv, Soup.Message msg, string path, HashTable<string, string>? query, ClientContext ctx) {
+    /**
+    * Set some options for the project
+    */
+    public static void options_handler (Soup.Server _serv, Soup.Message msg) {
         var serv = (Service)_serv;
         var parser = new Json.Parser ();
         parser.load_from_data ((string)msg.request_body.data);
@@ -68,7 +89,10 @@ public class Service : Server {
         msg.set_status (200);
     }
 
-    public static void errors_handler (Server _serv, Soup.Message msg, string path, HashTable<string, string>? query, ClientContext ctx) {
+    /**
+    * Serves the errors and warnings as JSON
+    */
+    public static void errors_handler (Soup.Server _serv, Soup.Message msg) {
         var serv = (Service)_serv;
         if (serv.needs_update) {
             serv.init_context ();
@@ -77,7 +101,10 @@ public class Service : Server {
         msg.set_status (200);
     }
 
-    public static void symbol_handler (Server _serv, Soup.Message msg, string path, HashTable<string, string>? query, ClientContext ctx) {
+    /**
+    * Gives details about a symbol stored in the symbols table.
+    */
+    public static void symbol_handler (Soup.Server _serv, Soup.Message msg) {
         var serv = (Service)_serv;
         var parser = new Json.Parser ();
         parser.load_from_data ((string)msg.request_body.data);
@@ -91,6 +118,9 @@ public class Service : Server {
         msg.set_status (200);
     }
 
+    /**
+    * Generates an AST for
+    */
     public string get_ast () {
         var ast = new JsonAST ();
         code_context.root.accept (ast);
@@ -117,17 +147,17 @@ public class Service : Server {
         }
         root.set_array_member ("errors", errs);
         root.set_array_member ("warnings", warns);
-        var root_node = new Json.Node (NodeType.OBJECT);
+        var root_node = new Json.Node (Json.NodeType.OBJECT);
         root_node.set_object (root);
-        var gen = new Generator () {
+        var gen = new Json.Generator () {
             root = root_node
         };
         return gen.to_data (null);
     }
 
-    public int init_context () {
+    public void init_context () {
         if (files.size == 0) {
-            return 42;
+            return;
         }
         string[] sources = files.to_array ();
         string[] packages = pkgs.to_array ();
@@ -147,11 +177,10 @@ public class Service : Server {
         string internal_header_filename = null;
         string header_filename = null;
 
-        this.code_context = new CodeContext ();
-        this.report.clear ();
-        this.code_context.report = this.report;
-    	CodeContext.push (this.code_context);
-    	this.code_context.report.set_colors ("error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01");
+        code_context = new Vala.CodeContext ();
+        report.clear ();
+        code_context.report = report;
+    	Vala.CodeContext.push (code_context);
 
     	// default to build executable
     	if (output == null) {
@@ -159,81 +188,78 @@ public class Service : Server {
     		// else we use the default output file of the C compiler
     		if (sources[0].last_index_of_char ('.') != -1) {
     			int dot = sources[0].last_index_of_char ('.');
-    			output = GLib.Path.get_basename (sources[0].substring (0, dot));
+    			output = Path.get_basename (sources[0].substring (0, dot));
     		}
     	}
 
-    	this.code_context.assert = true;
-    	this.code_context.checking = true;
-    	this.code_context.deprecated = true;
-    	this.code_context.since_check = true;
-    	this.code_context.hide_internal = false;
-    	this.code_context.experimental = false;
-    	this.code_context.experimental_non_null = false;
-    	this.code_context.gobject_tracing = false;
-    	this.code_context.report.enable_warnings = true;
-    	this.code_context.version_header = true;
+    	code_context.assert = true;
+    	code_context.checking = true;
+    	code_context.deprecated = true;
+    	code_context.since_check = true;
+    	code_context.hide_internal = false;
+    	code_context.experimental = false;
+    	code_context.experimental_non_null = false;
+    	code_context.gobject_tracing = false;
+    	code_context.report.enable_warnings = true;
+    	code_context.version_header = true;
 
-        this.code_context.basedir = CodeContext.realpath (".");
-        this.code_context.directory = this.code_context.basedir;
-    	this.code_context.vapi_directories = {};
-    	this.code_context.vapi_comments = true;
-    	this.code_context.gir_directories = {};
-    	this.code_context.metadata_directories = {};
-    	this.code_context.debug = false;
-    	this.code_context.mem_profiler = false;
-    	this.code_context.save_temps = false;
+        code_context.basedir = Vala.CodeContext.realpath (".");
+        code_context.directory = code_context.basedir;
+    	code_context.vapi_directories = {};
+    	code_context.vapi_comments = true;
+    	code_context.gir_directories = {};
+    	code_context.metadata_directories = {};
+    	code_context.debug = false;
+    	code_context.mem_profiler = false;
+    	code_context.save_temps = false;
 
-    	this.code_context.profile = Profile.GOBJECT;
-    	this.code_context.add_define ("GOBJECT");
+    	code_context.profile = Vala.Profile.GOBJECT;
+    	code_context.add_define ("GOBJECT");
     	nostdpkg |= fast_vapi_filename != null;
-    	this.code_context.nostdpkg = nostdpkg;
+    	code_context.nostdpkg = nostdpkg;
 
-    	if (defines != null) {
-    		foreach (string define in defines) {
-    			this.code_context.add_define (define);
-    		}
-    	}
+		foreach (string define in defines) {
+			code_context.add_define (define);
+		}
 
     	for (int i = 2; i <= 36; i += 2) {
-    		this.code_context.add_define ("VALA_0_%d".printf (i));
+    		code_context.add_define (@"VALA_0_$i");
     	}
 
-    	this.code_context.target_glib_major = 2;
-    	this.code_context.target_glib_minor = 32;
-    	for (int i = 16; i <= this.code_context.target_glib_minor; i += 2) {
-    		this.code_context.add_define ("GLIB_2_%d".printf (i));
+    	code_context.target_glib_major = 2;
+    	code_context.target_glib_minor = 32;
+    	for (int i = 16; i <= code_context.target_glib_minor; i += 2) {
+    		code_context.add_define (@"GLIB_2_$i");
     	}
 
     	if (pkgs.size > 0) {
     		foreach (string package in pkgs) {
-    			this.code_context.add_external_package (package);
+    			code_context.add_external_package (package);
     		}
     	}
 
     	if (fast_vapis != null) {
     		foreach (string vapi in fast_vapis) {
-    			var rpath = CodeContext.realpath (vapi);
-    			var source_file = new SourceFile (this.code_context, SourceFileType.FAST, rpath);
-    			this.code_context.add_source_file (source_file);
+    			var rpath = Vala.CodeContext.realpath (vapi);
+    			var source_file = new Vala.SourceFile (code_context, Vala.SourceFileType.FAST, rpath);
+    			code_context.add_source_file (source_file);
     		}
-    		this.code_context.use_fast_vapi = true;
+    		code_context.use_fast_vapi = true;
     	}
 
-    	this.code_context.gresources = gresources;
+    	code_context.gresources = gresources;
 
-    	if (this.code_context.report.get_errors () > 0 || (fatal_warnings && this.code_context.report.get_warnings () > 0)) {
-            print (this.get_errors ());
-            return 2;
+    	if (code_context.report.get_errors () > 0 || (fatal_warnings && code_context.report.get_warnings () > 0)) {
+            return;
     	}
 
-    	this.code_context.codegen = new GDBusServerModule ();
+    	code_context.codegen = new Vala.GDBusServerModule ();
 
     	bool has_c_files = false;
     	bool has_h_files = false;
 
     	foreach (string source in sources) {
-    		if (this.code_context.add_source_filename (source, false, true)) {
+    		if (code_context.add_source_filename (source, false, true)) {
     			if (source.has_suffix (".c")) {
     				has_c_files = true;
     			} else if (source.has_suffix (".h")) {
@@ -242,53 +268,38 @@ public class Service : Server {
     		}
     	}
 
-    	if (this.code_context.report.get_errors () > 0 || (fatal_warnings && this.code_context.report.get_warnings () > 0)) {
-    		return 1;
+    	if (code_context.report.get_errors () > 0 || (fatal_warnings && code_context.report.get_warnings () > 0)) {
+    		return;
     	}
 
-    	new Vala.Parser ().parse (this.code_context);
-    	new Genie.Parser ().parse (this.code_context);
-    	new GirParser ().parse (this.code_context);
+    	new Vala.Parser ().parse (code_context);
+    	new Vala.Genie.Parser ().parse (code_context);
+    	new Vala.GirParser ().parse (code_context);
 
-    	if (this.code_context.report.get_errors () > 0 || (fatal_warnings && this.code_context.report.get_warnings () > 0)) {
-    		return exit ();
+    	if (code_context.report.get_errors () > 0 || (fatal_warnings && code_context.report.get_warnings () > 0)) {
+    		return;
     	}
 
-    	this.code_context.check ();
+    	code_context.check ();
 
-    	if (this.code_context.report.get_errors () > 0 || (fatal_warnings && this.code_context.report.get_warnings () > 0)) {
-    		return 7;
+    	if (code_context.report.get_errors () > 0 || (fatal_warnings && code_context.report.get_warnings () > 0)) {
+            return;
     	}
 
     	if (library == null) {
     		// building program, require entry point
-    		if (!has_c_files && this.code_context.entry_point == null) {
-    			Report.error (null, "program does not contain a static `main' method");
+    		if (!has_c_files && code_context.entry_point == null) {
+    			Vala.Report.error (null, "program does not contain a static `main' method");
+                return;
     		}
     	}
 
-    	if (this.code_context.report.get_errors () > 0 || (fatal_warnings && this.code_context.report.get_warnings () > 0)) {
-    		return 5;
-    	}
-
-        this.needs_update = false;
-        return 0;
-    }
-
-    private int exit () {
-		if (this.code_context.report.get_errors () == 0 && this.code_context.report.get_warnings () == 0) {
-			return 0;
-		}
-		if (this.code_context.report.get_errors () == 0) {
-			return 0;
-		} else {
-			return 1;
-		}
+        needs_update = false;
     }
 }
 
 void main (string[] args) {
-    Service serv = new Service (int.parse(args[1]));
+    var serv = new Valhalla.Service (int.parse(args[1]));
     print ("Vala service now running\n");
     serv.run ();
 }

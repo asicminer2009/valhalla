@@ -13,5 +13,6 @@ executable('completer',
   'src/json-ast.vala',
   'src/main.vala',
   'src/report.vala',
+  'src/report-message.vala',
   dependencies : [glib, gobject, json, gee, libvala, soup]
 )
