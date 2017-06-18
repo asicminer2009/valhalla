@@ -125,10 +125,13 @@ public class Valhalla.JsonAST : Vala.CodeVisitor {
             // add it to the variables list
             var json_var = create_node (param, "variable");
             json_var.set_string_member ("name", param.name);
-            json_var.set_string_member ("dataType", param.variable_type.to_string ());
-            json_var.set_int_member ("symbolId", last_symbol_id);
-            symbols[last_symbol_id] = param.variable_type.data_type;
-            last_symbol_id++;
+            if (param.variable_type != null) { // variadic parameters doesn't have a data type
+                json_var.set_string_member ("dataType", param.variable_type.to_string ());
+                json_var.set_int_member ("symbolId", last_symbol_id);
+                symbols[last_symbol_id] = param.variable_type.data_type;
+                last_symbol_id++;
+            }
+
             vars.add_object_element (json_var);
         }
         meth.set_array_member ("variables", vars);
@@ -183,7 +186,6 @@ public class Valhalla.JsonAST : Vala.CodeVisitor {
     	var enm = create_node (en, "enum");
         enm.set_string_member ("name", en.name);
         enm.set_string_member ("qualifiedName", en.get_full_name ());
-        current.add_object_element (enm);
         children (en, enm);
 	}
 
@@ -200,10 +202,16 @@ public class Valhalla.JsonAST : Vala.CodeVisitor {
         foreach (var variable in bl.get_local_variables ()) {
             var json_var = create_node (variable, "variable");
             json_var.set_string_member ("name", variable.name);
-            json_var.set_string_member ("dataType", variable.variable_type.to_string ());
-            json_var.set_int_member ("symbolId", last_symbol_id);
-            symbols[last_symbol_id] = variable.variable_type.data_type;
-            last_symbol_id++;
+
+            if (variable.variable_type != null) {
+                json_var.set_string_member ("dataType", variable.variable_type.to_string ());
+                json_var.set_int_member ("symbolId", last_symbol_id);
+                symbols[last_symbol_id] = variable.variable_type.data_type;
+                last_symbol_id++;
+            } else {
+                warning ("No data type for varibale %s\n", variable.get_full_name ());
+            }
+
             vars.add_object_element (json_var);
         }
         json.set_array_member ("variables", vars);
@@ -211,11 +219,17 @@ public class Valhalla.JsonAST : Vala.CodeVisitor {
     }
 
     public override void visit_error_code (Vala.ErrorCode ecode) {
-    	return;
+    	var json = create_node (ecode, "error-code");
+        json.set_string_member ("name", ecode.name);
+        json.set_string_member ("qualifiedName", ecode.get_full_name ());
+        current.add_object_element (json);
 	}
 
-    public override void visit_error_domain (Vala.ErrorDomain edomain) {
-    	return;
+    public override void visit_error_domain (Vala.ErrorDomain errdom) {
+        var json = create_node (errdom, "error-domain");
+        json.set_string_member ("name", errdom.name);
+        json.set_string_member ("qualifiedName", errdom.get_full_name ());
+        children (errdom, json);
 	}
 
     public override void visit_field (Vala.Field f) {
@@ -226,7 +240,7 @@ public class Valhalla.JsonAST : Vala.CodeVisitor {
 	}
 
     public override void visit_interface (Vala.Interface iface) {
-        var iface_json = create_node (iface, "class");
+        var iface_json = create_node (iface, "interface");
         iface_json.set_string_member ("name", iface.name);
         iface_json.set_string_member ("qualifiedName", iface.get_full_name ());
 

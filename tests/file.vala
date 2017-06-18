@@ -4,8 +4,9 @@ using GLib;
 namespace Valhalla {
 
     /**
-    * It all begins here.
+    * Always be polite.
     */
-    void main (string[] args) {
+    void hello_world (string[] args) {
+        print ("Hello, world!\n");
     }
 }

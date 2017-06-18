@@ -160,22 +160,14 @@ public class Valhalla.Service : Soup.Server {
             return;
         }
         string[] sources = files.to_array ();
-        string[] packages = pkgs.to_array ();
         string[] defines = {};
         bool nostdpkg = true;
-        string gir = null;
         string library = null;
         bool fatal_warnings = false;
         string output = null;
-        bool ccode_only = false;
         string[] fast_vapis = {};
         string fast_vapi_filename = null;
         string[] gresources = {};
-        string directory = null;
-        string shared_library = null;
-        string internal_vapi_filename = null;
-        string internal_header_filename = null;
-        string header_filename = null;
 
         code_context = new Vala.CodeContext ();
         report.clear ();

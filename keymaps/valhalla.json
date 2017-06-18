@@ -1,11 +1,11 @@
 {
   "atom-workspace": {
     "ctrl-h": "valhalla:new-class",
-    "ctrl-alt-w": "valhalla:documentation"
+    "ctrl-alt-w": "valhalla:documentation",
+    "ctrl-alt-n": "valhalla:toggle-symbols-list"
   },
   "atom-workspace atom-text-editor:not([mini])[data-grammar=\"source vala\"]": {
     "ctrl-j": "unset!",
-    "ctrl-j": "valhalla:surround",
-    "ctrl-alt-n": "valhalla:toggle-symbols-list"
+    "ctrl-j": "valhalla:surround"
   }
 }
